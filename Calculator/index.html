@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <style>
+      body {
+        background: linear-gradient(to top left, #33ccff 0%, #ff99cc 100%);
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        font-family: "Arial", sans-serif;
+      }
+
+      #result {
+        font-family: "Arial", sans-serif;
+        font-size: 24px;
+        font-weight: bold;
+        color: #2d3748;
+        margin-top: 15px;
+        padding: 10px;
+        background-color: #f7fafc;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .calculator {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 320px;
+        background: linear-gradient(to top left, #33ccff 0%, #ff99cc 100%);
+        /*background-color: rgba(255, 255, 255, 0.95);*/
+        border: none;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        padding: 30px;
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+      }
+
+      button {
+        background-color: #667eea;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 12px 24px;
+        margin: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      button:hover {
+        background-color: #764ba2;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      }
+
+      input {
+        border: 2px solid #e2e8f0;
+        border-radius: 8px;
+        height: 40px;
+        padding: 0 15px;
+        font-size: 16px;
+        margin: 8px 0;
+        width: 200px;
+        transition: border-color 0.3s ease;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: #667eea;
+      }
+
+      select {
+        border: 2px solid #e2e8f0;
+        border-radius: 8px;
+        height: 40px;
+        padding: 0 15px;
+        font-size: 16px;
+        margin: 8px 0;
+        background-color: white;
+        cursor: pointer;
+      }
+
+      select:focus {
+        outline: none;
+        border-color: #667eea;
+      }
+
+      .calc {
+        margin: 20px 0;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="calculator">
+      <div class="container">
+        <input type="number" id="num1" placeholder="Enter first number" />
+        <select id="operation">
+          <option value="add">+</option>
+          <option value="subtract">-</option>
+          <option value="multiply">×</option>
+          <option value="divide">÷</option>
+          <option value="modulus">%</option>
+        </select>
+        <input type="number" id="num2" placeholder="Enter second number" />
+        <div class="calc">
+          <button onclick="calculate()">Calculate</button>
+          <button onclick="clearCalculator()">Clear</button>
+        </div>
+
+        <div id="result"></div>
+      </div>
+    </div>
+    <script>
+      function calculate() {
+        const num1 = document.getElementById("num1").value;
+        const num2 = document.getElementById("num2").value;
+        const operation = document.getElementById("operation").value;
+        let result;
+
+        if (operation === "add") {
+          result = Number(num1) + Number(num2);
+        } else if (operation === "subtract") {
+          result = Number(num1) - Number(num2);
+        } else if (operation === "multiply") {
+          result = Number(num1) * Number(num2);
+        } else if (operation === "divide") {
+          result = Number(num1) / Number(num2);
+        } else if (operation === "modulus") {
+          result = Number(num1) % Number(num2);
+        }
+
+        document.getElementById("result").innerText = "Result: " + result;
+      }
+
+      function clearCalculator() {
+        document.getElementById("num1").value = "";
+        document.getElementById("num2").value = "";
+        document.getElementById("result").innerText = "";
+      }
+    </script>
+  </body>
+</html>
